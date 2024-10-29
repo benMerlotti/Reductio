@@ -40,4 +40,158 @@ List<ProductTypeId> productTypes = new List<ProductTypeId>()
     new ProductTypeId { Id = 4, Name = "Wands" }
 };
 
-Console.WriteLine("Welcome to Red and Abe's Magic Shop");
+string input = null;
+while (input != "z")
+
+{
+    Console.Clear();
+    Console.WriteLine("Welcome to Red and Abe's Magic Shop");
+    Console.WriteLine(@"a. View all products
+b. Add a product
+c. Delete a product
+d. Update a product
+e. Search by product type
+z. Exit");
+
+    Console.WriteLine("Choose an option to continue:");
+    input = Console.ReadLine();
+
+    if (input == "a")
+    {
+        ViewProducts();
+        Console.WriteLine("Press any key to continue.");
+        Console.ReadKey();
+    }
+    else if (input == "b")
+    {
+        AddProduct();
+        Console.WriteLine("Press any key to continue.");
+        Console.ReadKey();
+    }
+    else if (input == "c")
+    {
+        DeleteProduct();
+        Console.WriteLine("Press any key to continue.");
+        Console.ReadKey();
+    }
+    else if (input == "d")
+    {
+        UpdateProduct();
+        Console.WriteLine("Press any key to continue.");
+        Console.ReadKey();
+    }
+}
+
+void ViewProducts()
+{
+    foreach (Product product in products)
+    {
+        Console.WriteLine(product.Name);
+    }
+}
+
+void AddProduct()
+{
+
+
+    Console.WriteLine("To add a product fill out the form below:");
+
+    Console.WriteLine("Name:");
+    string name = Console.ReadLine();
+
+    Console.WriteLine("Price:");
+    decimal price = decimal.Parse(Console.ReadLine());
+
+    Console.WriteLine(@"Type:
+    1. Apparel
+    2. Potion
+    3. Enchanted Object
+    4. Wand");
+    int type = int.Parse(Console.ReadLine().Trim());
+
+    Product newProduct = new Product()
+    {
+        Name = name,
+        Price = price,
+        Available = true,
+        ProductType = type
+    };
+
+    products.Add(newProduct);
+
+    Console.WriteLine("Product added successfully!");
+}
+
+void DeleteProduct()
+{
+    int index = 1;
+    Console.WriteLine("Choose a product to delete:");
+
+    foreach (Product product in products)
+    {
+        Console.WriteLine($"{index}. {product.Name}");
+        index++;
+    }
+
+    Console.WriteLine("Enter the number of the product to delete:");
+    int deletedProductId = int.Parse(Console.ReadLine());
+
+    products.Remove(products[deletedProductId - 1]);
+}
+
+void UpdateProduct()
+{
+    int index = 1;
+    Console.WriteLine("Choose a product to update:");
+
+    foreach (Product product in products)
+    {
+        Console.WriteLine($"{index}. {product.Name}");
+        index++;
+    }
+
+    Console.WriteLine("Enter the number of the product to update:");
+    int chosenProductId = int.Parse(Console.ReadLine());
+
+    Product chosenProduct = products[chosenProductId - 1];
+
+    // Prompt for new values and update each property
+    Console.Write("Enter new name (leave blank to keep current): ");
+    string newName = Console.ReadLine();
+    if (!string.IsNullOrWhiteSpace(newName))
+    {
+        chosenProduct.Name = newName;
+    }
+
+    Console.Write("Enter new price (leave blank to keep current): ");
+    string newPrice = Console.ReadLine();
+    if (!string.IsNullOrWhiteSpace(newPrice))
+    {
+        chosenProduct.Price = decimal.Parse(newPrice);
+    }
+
+    Console.Write("Is the product available (true/false): ");
+    string newAvailable = Console.ReadLine();
+    if (!string.IsNullOrWhiteSpace(newAvailable))
+    {
+        chosenProduct.Available = bool.Parse(newAvailable);
+    }
+
+    Console.WriteLine(@"Select new type:
+    1. Apparel
+    2. Potion
+    3. Enchanted Object
+    4. Wand
+    (Leave blank to keep current)");
+    string newType = Console.ReadLine();
+    if (!string.IsNullOrWhiteSpace(newType))
+    {
+        chosenProduct.ProductType = int.Parse(newType);
+    }
+
+    Console.WriteLine("Product updated successfully.");
+
+
+
+
+}
