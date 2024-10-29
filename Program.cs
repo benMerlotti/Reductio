@@ -51,6 +51,7 @@ b. Add a product
 c. Delete a product
 d. Update a product
 e. Search by product type
+f. View only available products.
 z. Exit");
 
     Console.WriteLine("Choose an option to continue:");
@@ -83,6 +84,12 @@ z. Exit");
     else if (input == "e")
     {
         SearchByType();
+        Console.WriteLine("Press any key to continue.");
+        Console.ReadKey();
+    }
+    else if (input == "f")
+    {
+        ViewAvailable();
         Console.WriteLine("Press any key to continue.");
         Console.ReadKey();
     }
@@ -218,4 +225,16 @@ void SearchByType()
             Console.WriteLine(product.Name);
         }
     }
+}
+
+void ViewAvailable()
+{
+
+    List<Product> unsoldProducts = products.Where(p => !p.Available).ToList();
+    foreach (Product product in unsoldProducts)
+    {
+
+        Console.WriteLine(product.Name);
+    }
+
 }
