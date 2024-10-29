@@ -4,32 +4,32 @@ Console.WriteLine("Hello, World!");
 List<Product> products = new List<Product>()
 {
     // Apparel
-    new Product() { Name = "Wizard Hat", Price = 15.99m, Available = true, ProductType = 1 },
-    new Product() { Name = "Enchanted Robe", Price = 30.50m, Available = true, ProductType = 1 },
-    new Product() { Name = "Magic Boots", Price = 25.00m, Available = false, ProductType = 1 },
-    new Product() { Name = "Sorcerer's Gloves", Price = 12.75m, Available = true, ProductType = 1 },
-    new Product() { Name = "Mystic Belt", Price = 10.99m, Available = true, ProductType = 1 },
+    new Product() { Name = "Wizard Hat", Price = 15.99m, Available = true, ProductType = 1, DateStocked = new DateTime(2023, 7, 12) },
+    new Product() { Name = "Enchanted Robe", Price = 30.50m, Available = true, ProductType = 1, DateStocked = new DateTime(2023, 8, 3) },
+    new Product() { Name = "Magic Boots", Price = 25.00m, Available = false, ProductType = 1, DateStocked = new DateTime(2023, 6, 25) },
+    new Product() { Name = "Sorcerer's Gloves", Price = 12.75m, Available = true, ProductType = 1, DateStocked = new DateTime(2023, 7, 20) },
+    new Product() { Name = "Mystic Belt", Price = 10.99m, Available = true, ProductType = 1, DateStocked = new DateTime(2023, 8, 1) },
 
     // Potions
-    new Product() { Name = "Healing Potion", Price = 5.50m, Available = true, ProductType = 2 },
-    new Product() { Name = "Mana Elixir", Price = 8.00m, Available = true, ProductType = 2 },
-    new Product() { Name = "Invisibility Potion", Price = 20.00m, Available = false, ProductType = 2 },
-    new Product() { Name = "Strength Serum", Price = 12.99m, Available = true, ProductType = 2 },
-    new Product() { Name = "Fire Resistance Potion", Price = 15.00m, Available = false, ProductType = 2 },
+    new Product() { Name = "Healing Potion", Price = 5.50m, Available = true, ProductType = 2, DateStocked = new DateTime(2023, 8, 10) },
+    new Product() { Name = "Mana Elixir", Price = 8.00m, Available = true, ProductType = 2, DateStocked = new DateTime(2023, 8, 15) },
+    new Product() { Name = "Invisibility Potion", Price = 20.00m, Available = false, ProductType = 2, DateStocked = new DateTime(2023, 6, 30) },
+    new Product() { Name = "Strength Serum", Price = 12.99m, Available = true, ProductType = 2, DateStocked = new DateTime(2023, 8, 5) },
+    new Product() { Name = "Fire Resistance Potion", Price = 15.00m, Available = false, ProductType = 2, DateStocked = new DateTime(2023, 7, 1) },
 
     // Enchanted Objects
-    new Product() { Name = "Invisibility Cloak", Price = 250.00m, Available = false, ProductType = 3 },
-    new Product() { Name = "Flying Broomstick", Price = 75.00m, Available = true, ProductType = 3 },
-    new Product() { Name = "Magic Mirror", Price = 100.00m, Available = true, ProductType = 3 },
-    new Product() { Name = "Teleportation Stone", Price = 150.50m, Available = false, ProductType = 3 },
-    new Product() { Name = "Crystal Ball", Price = 60.00m, Available = true, ProductType = 3 },
+    new Product() { Name = "Invisibility Cloak", Price = 250.00m, Available = false, ProductType = 3, DateStocked = new DateTime(2023, 7, 18) },
+    new Product() { Name = "Flying Broomstick", Price = 75.00m, Available = true, ProductType = 3, DateStocked = new DateTime(2023, 7, 22) },
+    new Product() { Name = "Magic Mirror", Price = 100.00m, Available = true, ProductType = 3, DateStocked = new DateTime(2023, 6, 28) },
+    new Product() { Name = "Teleportation Stone", Price = 150.50m, Available = false, ProductType = 3, DateStocked = new DateTime(2023, 7, 5) },
+    new Product() { Name = "Crystal Ball", Price = 60.00m, Available = true, ProductType = 3, DateStocked = new DateTime(2023, 8, 8) },
 
     // Wands
-    new Product() { Name = "Phoenix Feather Wand", Price = 75.00m, Available = true, ProductType = 4 },
-    new Product() { Name = "Dragon Heartstring Wand", Price = 85.00m, Available = false, ProductType = 4 },
-    new Product() { Name = "Elder Wand", Price = 300.00m, Available = false, ProductType = 4 },
-    new Product() { Name = "Unicorn Hair Wand", Price = 70.00m, Available = true, ProductType = 4 },
-    new Product() { Name = "Ash Wood Wand", Price = 45.00m, Available = true, ProductType = 4 }
+    new Product() { Name = "Phoenix Feather Wand", Price = 75.00m, Available = true, ProductType = 4, DateStocked = new DateTime(2023, 7, 2) },
+    new Product() { Name = "Dragon Heartstring Wand", Price = 85.00m, Available = false, ProductType = 4, DateStocked = new DateTime(2023, 7, 16) },
+    new Product() { Name = "Elder Wand", Price = 300.00m, Available = false, ProductType = 4, DateStocked = new DateTime(2023, 6, 18) },
+    new Product() { Name = "Unicorn Hair Wand", Price = 70.00m, Available = true, ProductType = 4, DateStocked = new DateTime(2023, 8, 13) },
+    new Product() { Name = "Ash Wood Wand", Price = 45.00m, Available = true, ProductType = 4, DateStocked = new DateTime(2023, 7, 25) }
 };
 
 List<ProductTypeId> productTypes = new List<ProductTypeId>()
@@ -92,7 +92,7 @@ void ViewProducts()
 {
     foreach (Product product in products)
     {
-        Console.WriteLine(product.Name);
+        Console.WriteLine($"{product.Name} Type: {product.ProductType} Price: {product.Price} Days on shelf: {product.DaysOnShelf}");
     }
 }
 
