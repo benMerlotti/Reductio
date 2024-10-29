@@ -80,6 +80,12 @@ z. Exit");
         Console.WriteLine("Press any key to continue.");
         Console.ReadKey();
     }
+    else if (input == "e")
+    {
+        SearchByType();
+        Console.WriteLine("Press any key to continue.");
+        Console.ReadKey();
+    }
 }
 
 void ViewProducts()
@@ -191,7 +197,25 @@ void UpdateProduct()
 
     Console.WriteLine("Product updated successfully.");
 
+}
 
+void SearchByType()
+{
+    Console.WriteLine("Choose a product type to show inventory for that type:");
+    int index = 1;
+    foreach (ProductTypeId type in productTypes)
+    {
+        Console.WriteLine($"{index}. {type.Name}");
+        index++;
+    }
 
+    int chosenType = int.Parse(Console.ReadLine());
 
+    foreach (Product product in products)
+    {
+        if (chosenType == product.ProductType)
+        {
+            Console.WriteLine(product.Name);
+        }
+    }
 }
